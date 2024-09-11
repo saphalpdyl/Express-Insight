@@ -1,3 +1,3 @@
 import logger from "./lib/logger.js";
 
-logger({})
+export default logger;
