@@ -1,3 +1,3 @@
-import logger from "./lib/logger.js";
+import setupExpressInsight from "./lib/index.js";
 
-export default logger;
+export default setupExpressInsight;
