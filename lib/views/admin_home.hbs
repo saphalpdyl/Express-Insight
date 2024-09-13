@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/css/output.css">
   </head>
   <body class="p-4">
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center mb-3">
       <div class="flex gap-2 items-baseline">
         <i class="las la-search text-4xl"></i>
         <span class="text-3xl font-light">Express Insight</span>
@@ -13,6 +13,8 @@
         <span class="monospace font-bold text-xs text-gray-800">Made with 💖 by saphalpdyl</span>
       </div>
     </div>
-    
+
+    <span class="text-xl font-extralight">Configuration</span>
+    <pre class="font-bold text-sm">{{> objectRenderer config=configurationJson}}</pre>
   </body>
 </html>
