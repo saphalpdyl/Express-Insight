@@ -8,6 +8,9 @@
       <div class="flex gap-2 items-baseline">
         <i class="las la-search text-4xl"></i>
         <span class="text-3xl font-light">Express Insight</span>
+        {{#if configurationJson.projectName }}
+          <span class="font-light"> - {{ configurationJson.projectName }}</span>
+        {{/if}}
       </div>
       <div class="flex justify-end">
         <span class="monospace font-bold text-xs text-gray-800">Made with 💖 by saphalpdyl</span>

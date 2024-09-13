@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.dev.js",
-    "tailwind": "npx tailwindcss -i ./lib/public/css/global.css -o ./lib/public/css/output.css --watch"
+    "tailwind": "npx tailwindcss --minify -i ./lib/public/css/global.css -o ./lib/public/css/output.css --watch"
   },
   "keywords": [
     "log",
