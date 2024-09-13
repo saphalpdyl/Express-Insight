@@ -8,8 +8,8 @@
       <div class="flex gap-2 items-baseline">
         <i class="las la-search text-4xl"></i>
         <span class="text-3xl font-light">Express Insight</span>
-        {{#if configurationJson.projectName }}
-          <span class="font-light"> - {{ configurationJson.projectName }}</span>
+        {{#if config.projectName }}
+          <span class="font-light"> - {{ config.projectName }}</span>
         {{/if}}
       </div>
       <div class="flex justify-end">
@@ -22,7 +22,7 @@
       <div class="order-3 lg:order-2"></div>
       <div class="border-gray-300 border-s-2 pl-2 order-2 lg:order-3">
         <span class="text-xl font-extralight block mb-2">Configuration</span>
-        <pre class="font-bold text-sm">{{> objectRenderer config=configurationJson}}</pre>
+        <pre class="font-bold text-sm">{{> objectRenderer config=config}}</pre>
       </div>
     </div>
   </body>
