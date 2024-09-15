@@ -14,15 +14,13 @@ Here's a basic example of how Express Insight will be used in an Express applica
 
 ```javascript
 import express from 'express';
-import logger from 'express-insight';
+import setupExpressInsight from 'express-insight';
 
 const app = express();
 
-app.use(logger({
-  basePath: "....",
-  logFolderName: "log",
-  ....
-}));
+setupExpressInsight(app, {
+  projectName: "Example Project",
+});
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');
@@ -32,6 +30,10 @@ app.listen(3000, () => {
   console.log('Server started on port 3000');
 });
 ```
+
+## Screenshots
+![image](https://github.com/user-attachments/assets/51ee73aa-db17-4c87-9ca4-211dd9aa602b)
+
 
 ## Learning Outcomes
 Through this project, I've gained experience with:
