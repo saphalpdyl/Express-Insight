@@ -21,15 +21,14 @@
     "tailwindcss": "^3.4.11"
   },
   "dependencies": {
+    "better-sqlite3": "^11.3.0",
     "express": "^4.21.0",
     "hbs": "^4.2.0",
     "lodash": "^4.17.21",
-    "sqlite3": "^5.1.7",
     "uuid": "^10.0.0"
   },
   "peerDependencies": {
     "express": "^4.21.0",
-    "sqlite3": "^5.1.7",
     "uuid": "^10.0.0"
   }
 }
