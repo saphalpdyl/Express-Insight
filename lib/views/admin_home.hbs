@@ -40,12 +40,11 @@
         <pre class="font-bold text-sm">{{> objectRenderer config=config}}</pre>
       </div>
     </div>
-    <div class="w-100 border-[1px] border-gray-300 my-2"></div>
-    <div class="flex lg:flex-row flex-col">
-      <div class="flex-[3] overflow-scroll text-xs" id="requestRows">
-
+    <div class="mx-4 px-2">
+      <div class="overflow-auto text-xs mb-10" id="requestRows">
+        <span class="text-2xl font-bold text-zinc-600">Request Logs</span>
       </div>
-      <div class="h-[70vh] flex-[2] scroll-auto overflow-y-auto overflow-x-hidden w-100 mx-4 px-2 text-zinc-600">
+      <div class="scroll-auto overflow-y-auto overflow-x-hidden w-100 text-zinc-600">
         <h3 class="text-2xl font-bold">Today's Log File</h3>
         <pre class="text-xs font-semibold">
           {{ logFile }}
@@ -94,7 +93,7 @@
 
       const datatable = new DataTable(requestRowsTableElement, {
         data: requestRows,
-        perPage: 2,
+        perPage: 10,
       });
 
     </script>
