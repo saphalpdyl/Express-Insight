@@ -61,7 +61,7 @@
         x: new Date(e.interval_start),
         y: e.request_count,
       }));
-      new Chartist.LineChart('#chart', {
+      new Chartist.BarChart('#chart', {
         series: [
           {
             name: "Requests",
@@ -71,6 +71,7 @@
       }, {
         showArea: true,
         showPoint: true,
+        distributeSeries: true,
         axisX: {
           type: Chartist.FixedScaleAxis,
           divisor: 10,
