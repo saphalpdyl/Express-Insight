@@ -163,6 +163,12 @@
             render: (data, td, dataIndex, cellIndex) => {
               return `<td>${(new Date(data[0].data)).toLocaleString()}</td>`;
             }
+          },
+          {
+            select: REQUEST_HEADING_URL,
+            render: (data, td, dataIndex, cellIndex) => {
+              return `<td>${data[0].data.split("?")[0]}</td>`
+            }
           }
         ]
       });
