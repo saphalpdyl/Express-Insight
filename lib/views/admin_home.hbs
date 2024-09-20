@@ -53,6 +53,23 @@
     </div>
     
     <script>
+      // CONSTANTS
+      // Headings index
+      REQUEST_HEADING_ID = 0
+      REQUEST_HEADING_REQUEST_ID = 1
+      REQUEST_HEADING_TIMESTAMP = 2
+      REQUEST_HEADING_METHOD = 3
+      REQUEST_HEADING_URL = 4
+      REQUEST_HEADING_CLIENT_IP = 5
+      REQUEST_HEADING_USER_AGENT = 6
+      REQUEST_HEADING_CONTENT_TYPE = 7
+      REQUEST_HEADING_REFERER = 8
+      REQUEST_HEADING_X_FORWARDED_FOR = 9
+      REQUEST_HEADING_QUERY_PARAMS = 10
+      REQUEST_HEADING_REQUEST_BODY = 11
+    </script>
+    
+    <script>
       const activityDataJson = decodeURIComponent("{{ activityData }}");
       const activityData = JSON.parse(activityDataJson);
 
@@ -101,10 +118,36 @@
         perPage: 10,
         columns: [
           {
-            select: [1,2,3,4,5,6,7,8,9,10,12],
+            select: [1,2,3,4,5,6,7,8,9,10,11,12],
             render: (data, td, dataIndex, cellIndex) => {
               if (data[0].data == "null") {
                 return "-";
+              }
+            }
+          },
+          {
+            select: REQUEST_HEADING_METHOD,
+            render: (data, td, dataIndex, cellIndex) => {
+              const cellData = data[0].data;
+              
+              if (cellData === "GET") {
+                td.attributes.class = "text-emerald-500";
+              } else if (cellData === "POST") {
+                td.attributes.class = "text-blue-500";
+              } else if (cellData === "PUT") {
+                td.attributes.class = "text-amber-500";
+              } else if (cellData === "DELETE") {
+                td.attributes.class = "text-red-500";
+              } else if (cellData === "PATCH") {
+                td.attributes.class = "text-indigo-500";
+              } else if (cellData === "HEAD") {
+                td.attributes.class = "text-purple-500";
+              } else if (cellData === "OPTIONS") {
+                td.attributes.class = "text-cyan-500";
+              } else if (cellData === "TRACE") {
+                td.attributes.class = "text-pink-500";
+              } else {
+                td.attributes.class = "text-gray-500";
               }
             }
           }
