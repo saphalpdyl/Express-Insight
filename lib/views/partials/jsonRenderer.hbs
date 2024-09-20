@@ -1,7 +1,7 @@
 {{#each config}}
 {{#if (isObject this)}}
 <span class="text-rose-500 rounded-lg p-[3px]">{{@key}}:</span>
-    {{> objectRenderer config=this}}
+    {{> jsonRenderer config=this}}
 {{else}}
 <span class="text-rose-500 rounded-lg p-[3px]">{{@key}}:</span> <span class="text-blue-500">{{this}}</span>
 {{/if}}
