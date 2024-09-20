@@ -92,8 +92,23 @@
       const requestRowsTableElement = document.querySelector("#requestRows");
 
       const datatable = new DataTable(requestRowsTableElement, {
-        data: requestRows,
+        data: {
+          headings: requestRows.headings.map(h => {
+            return h.split("_").join(" ").replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+          }),
+          data: requestRows.data,
+        },
         perPage: 10,
+        columns: [
+          {
+            select: [1,2,3,4,5,6,7,8,9,10,12],
+            render: (data, td, dataIndex, cellIndex) => {
+              if (data[0].data == "null") {
+                return "-";
+              }
+            }
+          }
+        ]
       });
 
     </script>
