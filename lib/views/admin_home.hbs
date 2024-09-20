@@ -43,6 +43,13 @@
     <div class="mx-4 px-2">
       <div class="overflow-auto text-xs mb-10" id="requestRows">
         <span class="text-2xl font-bold text-zinc-600">Request Logs</span>
+        <form class="flex gap-2 items-center font-bold my-2">
+          <label for="datetime_from">From</label>
+          <input type="datetime-local" name="datetime_from" class="border-[1px] border-zinc-300 rounded-lg p-1">
+          <label for="datetime_to">To</label>
+          <input type="datetime-local" name="datetime_to" class="border-[1px] border-zinc-300 rounded-lg p-1">
+          <button type="submit" class="bg-blue-500 hover:bg-blue-600 rounded-md text-white font-bold px-4 py-1">Search</button>
+        </form>
       </div>
       <div class="scroll-auto overflow-y-auto overflow-x-hidden w-100 text-zinc-600">
         <h3 class="text-2xl font-bold">Today's Log File</h3>
