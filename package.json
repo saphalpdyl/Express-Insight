@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.dev.js",
-    "tailwind": "npx tailwindcss --minify -i ./lib/public/css/global.css -o ./lib/public/css/output.css --watch"
+    "tailwind": "npx tailwindcss --minify -i ./lib/public/css/global.css -o ./lib/public/css/output.css --watch",
+    "test": "vitest --ui",
+    "test:build": "vitest --run"
   },
   "keywords": [
     "log",
@@ -17,8 +19,10 @@
   "author": "saphalpdyl",
   "license": "MIT",
   "devDependencies": {
+    "@vitest/ui": "^2.1.1",
     "nodemon": "^3.1.4",
-    "tailwindcss": "^3.4.11"
+    "tailwindcss": "^3.4.11",
+    "vitest": "^2.1.1"
   },
   "dependencies": {
     "better-sqlite3": "^11.3.0",
