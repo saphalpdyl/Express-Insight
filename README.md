@@ -32,7 +32,7 @@ app.listen(3000, () => {
 ```
 
 ## Screenshots
-![image](https://github.com/user-attachments/assets/51ee73aa-db17-4c87-9ca4-211dd9aa602b)
+![image](https://github.com/user-attachments/assets/26295ba0-dfeb-4ba8-8d5d-5dc440aee23c)
 
 
 ## Learning Outcomes
