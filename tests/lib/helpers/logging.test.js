@@ -13,7 +13,7 @@ vi.mock("fs", () => ({
 }));
 
 describe('File logging tests', () => { 
-  const mockCwd = "\\app";
+  const mockCwd = "/app";
   let settings;
 
   let monthYearLogFolderPath;
@@ -22,7 +22,8 @@ describe('File logging tests', () => {
   
   beforeAll(async () => {
     vol.reset();
-    fs.mkdirSync("/app");
+    vol.mkdirSync("/app/")
+    // fs.mkdirSync("app/");
 
     vi.spyOn(process, 'cwd').mockReturnValue(mockCwd);
     vi.setSystemTime(new Date(2024,0,1));
@@ -44,14 +45,14 @@ describe('File logging tests', () => {
     monthYearLogFolderPath = path.join(logFolderPath, monthYearString);
 
     expect(monthYearString).toBe("January-2024");
-    expect(monthYearLogFolderPath).toBe(`${mockCwd}\\log\\January-2024`)
+    expect(monthYearLogFolderPath).toBe(path.join(mockCwd, 'log', 'January-2024'))
   });
 
   it('should create appropiate log folders ', () => {
     createFolder(logFolderPath);
     createFolder(monthYearLogFolderPath);
 
-    expect(fs.existsSync(`${mockCwd}\\log`)).toBe(true);
+    expect(fs.existsSync(path.join(mockCwd, 'log'))).toBe(true);
     expect(fs.existsSync(monthYearLogFolderPath)).toBe(true);
 
     expect(createFolder(logFolderPath)).toBe(false);
@@ -101,7 +102,7 @@ describe('File logging tests', () => {
       contentType="application/json"
       referer="https://example.com"
       xForwardedFor="192.168.1.1"
-      queryParams={"param1":"value1","param2":"value2"}
+    queryParams={"param1":"value1","param2":"value2"}
       requestBody={}
       "
     `);
