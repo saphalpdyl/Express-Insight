@@ -102,7 +102,7 @@ describe('File logging tests', () => {
       contentType="application/json"
       referer="https://example.com"
       xForwardedFor="192.168.1.1"
-    queryParams={"param1":"value1","param2":"value2"}
+      queryParams={"param1":"value1","param2":"value2"}
       requestBody={}
       "
     `);
