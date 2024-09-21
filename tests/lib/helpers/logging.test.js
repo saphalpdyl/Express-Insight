@@ -26,7 +26,7 @@ describe('File logging tests', () => {
     // fs.mkdirSync("app/");
 
     vi.spyOn(process, 'cwd').mockReturnValue(mockCwd);
-    vi.setSystemTime(new Date(2024,0,1));
+    vi.setSystemTime(new Date(2024,0,1,0,0,0,0));
 
     settings = (await import("../../../lib/defaultSettings.js")).DEFAULT_SETTINGS;
   });
