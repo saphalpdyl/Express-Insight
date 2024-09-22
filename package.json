@@ -1,6 +1,6 @@
 {
   "name": "express_insight",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A beautiful framework to log your express request and responses locally on your express server",
   "main": "index.js",
   "type": "module",
