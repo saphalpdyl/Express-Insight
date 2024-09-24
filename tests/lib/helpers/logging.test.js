@@ -5,7 +5,7 @@ import { vi, expect, it, describe, beforeEach, beforeAll } from "vitest";
 import { fs, vol } from "memfs";
 
 import { generateLogFileStream, getSystemMonthYear, checkIfFolderExists, createFolder } from "../../../lib/utils.js";
-import { saveLogRequestEntry, saveLogResponseEntry } from "../../../lib/helpers/index.js"
+import { saveLogErrorEntry, saveLogRequestEntry, saveLogResponseEntry } from "../../../lib/helpers/index.js"
 
 vi.mock("fs", () => ({
   default: fs,
@@ -19,6 +19,10 @@ describe('File logging tests', () => {
   let monthYearLogFolderPath;
   let monthYearString;
   let logFolderPath;
+
+  let mockRequestInfo;
+  let mockResponseInfo;
+  let mockErrorInfo;
   
   beforeAll(async () => {
     vol.reset();
@@ -59,7 +63,7 @@ describe('File logging tests', () => {
   });
   
   it('should create a log request entry', async () => {
-    const mockRequestInfo = {
+    mockRequestInfo = {
       requestId: '12345',
       timestamp: new Date().toISOString(),
       method: 'GET',
@@ -95,8 +99,8 @@ describe('File logging tests', () => {
   });
 
   it("should create a log response entry", async () => {
-    const mockResponseInfo= {
-      requestId: '12345',
+    mockResponseInfo= {
+      requestId: mockRequestInfo.requestId,
       responseId: 'mock-response-id',
       timestamp: new Date().toISOString(),
       url: '/api/example-endpoint',
@@ -133,5 +137,32 @@ describe('File logging tests', () => {
     expect(logContents).toBeTruthy();
     
     expect(logContents).toContain("<<<log.response>>>");
+  });
+
+  it("should create a log error entry ", async () => {
+    mockErrorInfo = {
+      "requestId": mockRequestInfo.requestId,
+      "errorType": "DatabaseError",
+      "message": "Unable to connect to the database",
+      "stackTrace": "Error: Unable to connect to the database\n    at Object.<anonymous> (/path/to/file.js:10:15)",
+      "additionalInfo": "",
+      "timestamp": "2024-09-24T12:34:56.789Z",
+      "errorId": "3e6f8b38-90b0-4f08-bd6a-b0d25e88e9cf"
+    };
+
+    const writeStream = generateLogFileStream(monthYearLogFolderPath, new Date());
+
+    const writeFnSpy = vi.spyOn(writeStream, "write");
+    
+    saveLogErrorEntry(mockErrorInfo, mockRequestInfo, writeStream);
+    writeStream.close();
+
+    await once(writeStream, "close");
+
+    expect(writeFnSpy).toBeCalled();
+    expect(vol.existsSync(path.join(monthYearLogFolderPath, `1_1_2024.log`))).toBe(true);
+
+    const logContents = fs.readFileSync(path.join(monthYearLogFolderPath, `1_1_2024.log`)).toString("utf-8");
+    expect(logContents).toContain("<<<log.error>>>");
   });
 });
