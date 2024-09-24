@@ -1,3 +1,3 @@
-import setupExpressInsight from "./lib/index.js";
+import ExpressInsight from "./lib/index.js";
 
-export default setupExpressInsight;
+export default ExpressInsight;
