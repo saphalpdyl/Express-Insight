@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeAll, afterAll } from "vitest";
 import Database from "better-sqlite3";
-import { generateRequiredTables, saveLogRequestToDB, saveLogResponseToDB } from "../../../../lib/helpers/index.js";
-import { DATABASE_REQUEST_TABLE, DATABASE_RESPONSE_TABLE } from "../../../../lib/constants/index.js";
+import { generateRequiredTables, saveLogErrorToDB, saveLogRequestToDB, saveLogResponseToDB } from "../../../../lib/helpers/index.js";
+import { DATABASE_ERROR_TABLE, DATABASE_REQUEST_TABLE, DATABASE_RESPONSE_TABLE } from "../../../../lib/constants/index.js";
 
 describe("Creating a database", () => {
   // Database connection to a in:memory test database
@@ -41,6 +41,16 @@ describe("Creating a database", () => {
       referer: 'https://example.com',
       xForwardedFor: '192.168.1.1',
     },
+  };
+
+  const mockErrorInfo = {
+    "requestId": mockRequestInfo.requestId,
+    "errorType": "DatabaseError",
+    "message": "Unable to connect to the database",
+    "stackTrace": "Error: Unable to connect to the database\n    at Object.<anonymous> (/path/to/file.js:10:15)",
+    "additionalInfo": "",
+    "timestamp": "2024-09-24T12:34:56.789Z",
+    "errorId": "3e6f8b38-90b0-4f08-bd6a-b0d25e88e9cf"
   };
   
   beforeAll(() => {
@@ -82,6 +92,11 @@ describe("Creating a database", () => {
     const result = saveLogResponseToDB(conn, mockResponseInfo, getLatestRequestRowId);
 
     expect(result).toBeTypeOf("number");
-  })
+  });
 
+  it("should create error log entry in db", () => {
+    const result = saveLogErrorToDB(conn, mockErrorInfo);
+
+    expect(result).toBeTypeOf("number");
+  });
 })
