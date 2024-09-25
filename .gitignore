@@ -6,3 +6,7 @@
 .env
 .env.development
 .env.production
+
+# Production
+dist/
+prod/

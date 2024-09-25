@@ -1,0 +1,30 @@
+# Source files
+lib/
+src/
+
+# Configuration files
+.babelrc
+rollup.config.js
+.eslintrc
+.prettierrc
+tailwind.config.js
+vitest.config.js
+
+# Test files
+test/
+__tests__/
+
+# Build tools
+node_modules/
+
+# Version control
+.git
+.gitignore
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+log/

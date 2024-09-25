@@ -2,11 +2,18 @@
   "name": "express-insight",
   "version": "0.4.5",
   "description": "A beautiful framework to log your express request and responses locally on your express server",
-  "main": "index.js",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js",
   "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "index.js"
+  ],
   "scripts": {
     "dev": "nodemon index.dev.js",
     "tailwind": "npx tailwindcss --minify -i ./lib/public/css/global.css -o ./lib/public/css/output.css --watch",
+    "build": "rollup -c",
     "test": "vitest --ui",
     "test:build": "vitest --run"
   },
@@ -19,9 +26,12 @@
   "author": "saphalpdyl",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
     "@vitest/ui": "^2.1.1",
     "memfs": "^4.12.0",
     "nodemon": "^3.1.4",
+    "rollup": "^4.22.4",
     "tailwindcss": "^3.4.11",
     "vitest": "^2.1.1"
   },
