@@ -14,7 +14,8 @@
     "tailwind": "npx tailwindcss --minify -i ./lib/public/css/global.css -o ./lib/public/css/output.css --watch",
     "build": "rollup -c",
     "test": "vitest --ui",
-    "test:build": "vitest --run"
+    "test:build": "vitest --run",
+    "prepublish": "npm run build && npm run test:build"
   },
   "keywords": [
     "log",
