@@ -1,6 +1,6 @@
 import { expect, describe, it, beforeAll, afterAll } from "vitest";
 import Database from "better-sqlite3";
-import { generateRequiredTables, saveLogErrorToDB, saveLogRequestToDB, saveLogResponseToDB } from "../../../../lib/helpers/index.js";
+import { generateRequiredTables, saveLogErrorToDB, saveLogRequestToDB, saveLogResponseToDB } from "../../../../lib/features/logging/index.js"
 import { DATABASE_ERROR_TABLE, DATABASE_REQUEST_TABLE, DATABASE_RESPONSE_TABLE } from "../../../../lib/constants/index.js";
 
 describe("Creating a database", () => {

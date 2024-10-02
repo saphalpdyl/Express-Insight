@@ -4,8 +4,8 @@ import { once } from "events";
 import { vi, expect, it, describe, beforeEach, beforeAll } from "vitest";
 import { fs, vol } from "memfs";
 
-import { generateLogFileStream, getSystemMonthYear, checkIfFolderExists, createFolder } from "../../../lib/utils.js";
-import { saveLogErrorEntry, saveLogRequestEntry, saveLogResponseEntry } from "../../../lib/helpers/index.js"
+import { generateLogFileStream, getSystemMonthYear, checkIfFolderExists, createFolder } from "../../../../lib/utils.js";
+import { saveLogErrorEntry, saveLogRequestEntry, saveLogResponseEntry } from "../../../../lib/features/logging/index.js"
 
 vi.mock("fs", () => ({
   default: fs,
@@ -32,7 +32,7 @@ describe('File logging tests', () => {
     vi.spyOn(process, 'cwd').mockReturnValue(mockCwd);
     vi.setSystemTime(new Date(2024,0,1,0,0,0,0));
 
-    settings = (await import("../../../lib/defaultSettings.js")).DEFAULT_SETTINGS;
+    settings = (await import("../../../../lib/defaultSettings.js")).DEFAULT_SETTINGS;
   });
 
   it('should return correct in-memory directory structure', () => {
