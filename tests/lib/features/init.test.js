@@ -17,8 +17,10 @@ describe("Test the configuration DX", () => {
 
   beforeAll(async () => {
     vol.reset();
+    vol.mkdirSync("/app");
 
-    vi.spyOn(process, 'cwd').mockReturnValue("");
+    
+    vi.spyOn(process, 'cwd').mockReturnValue("/app");
     vi.setSystemTime(new Date(2024,0,1,0,0,0,0));
 
     ExpressInsight = (await import("../../../lib/index.js")).default;
