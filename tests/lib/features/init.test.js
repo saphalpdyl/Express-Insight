@@ -1,14 +1,29 @@
 import { vi, expect, it, describe, beforeEach, beforeAll, afterAll } from "vitest";
-import ExpressInsight from "../../../lib/index.js";
+import { fs, vol } from "memfs";
 import e from "express";
 import supertest from "supertest";
+
+vi.mock("fs", () => ({
+  default: fs,
+  ...fs,
+}));
 
 describe("Test the configuration DX", () => {
   // Test all warnings and errors
   const consoleMock = vi.spyOn(global.console, "log");
+  let ExpressInsight;
 
   let mockExpressApp; // mock app
 
+  beforeAll(async () => {
+    vol.reset();
+
+    vi.spyOn(process, 'cwd').mockReturnValue("");
+    vi.setSystemTime(new Date(2024,0,1,0,0,0,0));
+
+    ExpressInsight = (await import("../../../lib/index.js")).default;
+  });
+  
   beforeEach(() => {
     mockExpressApp = e();
   })
