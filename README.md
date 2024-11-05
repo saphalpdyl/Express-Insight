@@ -1,7 +1,9 @@
 # Express Insight
 
 ## Overview
-Express Insight is a logging middleware for Express.js applications. This project aims to provide detailed insights into incoming requests and outgoing responses in an Express application, helping developers better understand and debug their web applications.
+Express Insight is a logging middleware for Express.js applications. This project aims to provide detailed insights into incoming requests and outgoing responses in an Express application, helping developers better understand and debug their web applications
+
+[![Tech Stack](https://skillicons.dev/icons?i=typescript,vitest,rollup,sqlite)]()
 
 ## Usage
 Here's a basic implementation of the core plugin with the error plugin
